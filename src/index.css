@@ -1,0 +1,198 @@
+:root {
+  --bg-color: #050505;
+  --text-color: #e0e6ed;
+  --primary-color: #00f3ff;
+  /* Neon Cyan */
+  --secondary-color: #bc13fe;
+  /* Neon Purple */
+  --accent-color: #ff0055;
+  /* Neon Pink/Red */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.1);
+  --font-main: 'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(188, 19, 254, 0.05) 0%, transparent 40%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: 0.5s;
+}
+
+.glass-panel:hover::before {
+  left: 100%;
+}
+
+.glass-panel:hover {
+  border-color: var(--glass-highlight);
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #fff, var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  color: #000;
+  font-weight: 800;
+  font-family: var(--font-display);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.6);
+}
+
+.btn-outline {
+  background: rgba(0, 243, 255, 0.05);
+  border: 1px solid var(--primary-color);
+  padding: 14px 32px;
+  border-radius: 12px;
+  color: var(--primary-color);
+  font-family: var(--font-display);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(0, 243, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 243, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 243, 255, 0);
+  }
+}
